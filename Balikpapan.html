@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Balikpapan | TravEdu Indonesia</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background: #020a05; /* Hitam kehijauan gelap */
+      }
+
+      .glass {
+        background: rgba(20, 40, 30, 0.1); /* Tint hijau botol */
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 191, 0, 0.2); /* Border emas minyak tipis */
+      }
+
+      /* Slideshow */
+      .bg-slide {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transform: scale(1.1);
+        transition:
+          opacity 1.5s ease-in-out,
+          transform 10s linear;
+      }
+      .bg-slide.active {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* Custom Accent Colors */
+      .text-balikpapan-gold { color: #FFBF00; }
+      .bg-balikpapan-green { background-color: #004d2c; }
+    </style>
+  </head>
+
+  <body class="text-white font-sans overflow-x-hidden">
+    <nav
+      class="fixed top-0 w-full z-50 bg-black/30 backdrop-blur-md border-b border-green-900/40"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between"
+      >
+        <a
+          href="index.html"
+          class="text-xl font-bold bg-gradient-to-r from-green-400 to-yellow-500 bg-clip-text text-transparent"
+        >
+          TravEdu
+        </a>
+        <a
+          href="index.html"
+          class="text-sm px-4 py-2 rounded-lg bg-[#004d2c] hover:bg-green-800 border border-yellow-600/30 transition shadow-lg shadow-green-900/20"
+        >
+          <i class="fas fa-arrow-left mr-2"></i>Kembali
+        </a>
+      </div>
+    </nav>
+
+    <section
+      class="relative h-screen w-full overflow-hidden flex items-center justify-center"
+    >
+      <div id="balikpapan-bg" class="absolute inset-0"></div>
+
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-[#020a05] z-10"
+      ></div>
+
+      <div class="relative z-20 text-center px-6 max-w-4xl">
+        <h2
+          class="text-balikpapan-gold tracking-[0.4em] text-sm mb-4 uppercase font-bold animate-pulse"
+        >
+          The Oil City of Indonesia
+        </h2>
+        <h1 class="text-6xl md:text-8xl font-black uppercase mb-6 tracking-tighter text-white">
+          Balikpapan
+        </h1>
+        <div class="w-24 h-1 bg-green-600 mx-auto mb-6 shadow-[0_0_15px_#22c55e]"></div>
+        <p class="text-gray-200 max-w-2xl mx-auto text-lg leading-relaxed">
+          Gerbang utama Kalimantan Timur yang memadukan kemajuan industri minyak modern 
+          dengan keasrian hutan tropis dan kebersihan kota yang memenangkan berbagai penghargaan.
+        </p>
+      </div>
+
+      <div
+        id="balikpapan-timer"
+        class="absolute bottom-0 left-0 h-1.5 bg-[#FFBF00] z-30 shadow-[0_0_15px_#FFBF00]"
+        style="width: 0%"
+      ></div>
+    </section>
+
+    <section class="py-24 px-6">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 glass p-10 rounded-3xl border-l-4 border-l-green-700">
+          <h3 class="text-2xl font-bold mb-4 text-balikpapan-gold">
+            Tentang Balikpapan
+          </h3>
+          <p class="text-gray-300 leading-relaxed text-lg">
+            Dikenal dengan jargon <b>"BERIMAN"</b> (Bersih, Beriman, dan Aman), Balikpapan adalah kota dengan standar hidup tinggi di Kalimantan. 
+            Meskipun pusat industri minyak, kota ini tetap mempertahankan paru-paru dunianya melalui kawasan konservasi yang terjaga ketat.
+          </p>
+          <p class="text-gray-400 mt-4 italic">
+            "Habis gelap terbitlah terang." Menikmati kilauan lampu kilang minyak di malam hari dari pinggir pantai Melawai memberikan sisi romantis tersendiri bagi kota industri ini.
+          </p>
+        </div>
+
+        <div class="glass p-8 rounded-3xl space-y-8 flex flex-col justify-center border-t-4 border-t-green-600">
+          <div>
+            <p class="text-xs text-green-400 uppercase tracking-widest mb-1">Popularitas Traveler</p>
+            <p class="text-4xl font-black text-white">25.3%</p>
+          </div>
+          <div>
+            <p class="text-xs text-green-400 uppercase tracking-widest mb-1">Kategori</p>
+            <p class="font-bold text-xl text-yellow-500">Industri • Alam • Bisnis</p>
+          </div>
+          <div>
+            <p class="text-xs text-green-400 uppercase tracking-widest mb-1">Ikon Kota</p>
+            <p class="font-semibold text-gray-200">Pantai Melawai, Beruang Madu, Kilang Minyak</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   <section class="py-24 px-6 bg-[#010804]">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl font-black mb-10 text-white">
+      Destinasi <span class="text-balikpapan-gold">Balikpapan</span>
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <div class="group relative overflow-hidden rounded-2xl aspect-video md:aspect-square">
+        <img src="https://www.kabarkalimantan.id/wp-content/uploads/2024/06/Hutan-Balikpapan.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-green-950/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center">
+            <span class="font-bold border-2 border-white px-4 py-2 uppercase tracking-widest text-white mb-3">Hutan Lindung Sungai Wain</span>
+            <p class="text-white text-sm font-light">Rumah bagi flora dan fauna langka serta pusat edukasi lingkungan yang hijau nan asri.</p>
+        </div>
+      </div>
+
+      <div class="group relative overflow-hidden rounded-2xl aspect-video md:aspect-square">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.oQ4zajKXHVqLeOlhwdpFhgHaEc?pid=Api&h=220&P=0" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-green-950/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center">
+            <span class="font-bold border-2 border-white px-4 py-2 uppercase tracking-widest text-white mb-3">Pantai Manggar</span>
+            <p class="text-white text-sm font-light">Destinasi favorit keluarga dengan garis pantai luas dan berbagai wahana olahraga air.</p>
+        </div>
+      </div>
+
+      <div class="group relative overflow-hidden rounded-2xl aspect-video md:aspect-square">
+        <img src="https://images.unsplash.com/photo-1596422846543-75c6fc18a593?q=80&w=1000" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-green-950/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center">
+            <span class="font-bold border-2 border-white px-4 py-2 uppercase tracking-widest text-white mb-3">Taman Bekapai</span>
+            <p class="text-white text-sm font-light">Ikon jantung kota yang bersinar di malam hari dengan air mancur dan suasana santai.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    <footer class="py-24 px-6 text-center border-t border-green-900/30">
+      <h2 class="text-4xl font-black mb-6">Ayo ke Balikpapan!</h2>
+      <a
+        href="index.html"
+        class="inline-block px-10 py-4 bg-[#004d2c] hover:bg-green-700 text-white rounded-full font-bold transition-all hover:scale-105 shadow-xl shadow-green-900/40 border border-yellow-500"
+      >
+        Jelajahi Kota Lain
+      </a>
+    </footer>
+
+    <script>
+      const balikpapanImages = [
+        "https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/2023/06/08/Sunset-di-Pantai-Melawai-Fisqiyyah-Awawin-1001365276.jpg", // Pantai Melawai
+        "https://jejakpiknik.com/wp-content/uploads/2018/05/Screenshot_53-4.jpg", // Pantai Kemala
+        "https://www.shutterstock.com/image-photo/monumen-perjuangan-rakyat-jawa-barat-260nw-2235847605.jpg", // Monumen Perjuangan Rakyat
+      ];
+
+      let index = 0;
+      const bgContainer = document.getElementById("balikpapan-bg");
+      const timerBar = document.getElementById("balikpapan-timer");
+
+      balikpapanImages.forEach((img, i) => {
+        const div = document.createElement("div");
+        div.className = `bg-slide ${i === 0 ? "active" : ""}`;
+        div.style.backgroundImage = `linear-gradient(rgba(0,10,5,0.7), rgba(0,77,44,0.3)), url('${img}')`;
+        bgContainer.appendChild(div);
+      });
+
+      function nextSlide() {
+        const slides = document.querySelectorAll(".bg-slide");
+        if (slides.length === 0) return;
+        slides[index].classList.remove("active");
+        index = (index + 1) % balikpapanImages.length;
+        slides[index].classList.add("active");
+        startTimer();
+      }
+
+      function startTimer() {
+        timerBar.style.transition = "none";
+        timerBar.style.width = "0%";
+        setTimeout(() => {
+          timerBar.style.transition = "width 10000ms linear";
+          timerBar.style.width = "100%";
+        }, 50);
+      }
+
+      setInterval(nextSlide, 10000);
+      startTimer();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palembang | TravEdu Indonesia</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background: #0d0101; /* Hitam merah gelap */
+      }
+
+      .glass {
+        background: rgba(185, 28, 28, 0.05); /* Tint Merah Songket */
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(212, 175, 55, 0.2); /* Border Emas Sriwijaya */
+      }
+
+      /* Slideshow */
+      .bg-slide {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transform: scale(1.1);
+        transition:
+          opacity 1.5s ease-in-out,
+          transform 10s linear;
+      }
+      .bg-slide.active {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* Custom Accent Colors */
+      .text-palembang-gold { color: #D4AF37; }
+      .bg-palembang-red { background-color: #B91C1C; }
+    </style>
+  </head>
+
+  <body class="text-white font-sans overflow-x-hidden">
+    <nav
+      class="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-md border-b border-red-900/40"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between"
+      >
+        <a
+          href="../index.html"
+          class="text-xl font-bold bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent"
+        >
+          TravEdu
+        </a>
+        <a
+          href="../pages/index.html"
+          class="text-sm px-4 py-2 rounded-lg bg-[#B91C1C] hover:bg-red-900 border border-yellow-600/30 transition shadow-lg shadow-red-900/20"
+        >
+          <i class="fas fa-arrow-left mr-2"></i>Kembali
+        </a>
+      </div>
+    </nav>
+
+    <section
+      class="relative h-screen w-full overflow-hidden flex items-center justify-center"
+    >
+      <div id="palembang-bg" class="absolute inset-0"></div>
+
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-[#0d0101] z-10"
+      ></div>
+
+      <div class="relative z-20 text-center px-6 max-w-4xl">
+        <h2
+          class="text-palembang-gold tracking-[0.4em] text-sm mb-4 uppercase font-bold animate-pulse"
+        >
+          The Venice of the East
+        </h2>
+        <h1 class="text-6xl md:text-8xl font-black uppercase mb-6 tracking-tighter text-white">
+          Palembang
+        </h1>
+        <div class="w-24 h-1 bg-red-600 mx-auto mb-6 shadow-[0_0_15px_#ef4444]"></div>
+        <p class="text-gray-200 max-w-2xl mx-auto text-lg leading-relaxed">
+          Kota tertua di Indonesia yang menyimpan kejayaan Sriwijaya, dipisahkan oleh 
+          aliran Sungai Musi yang megah dan disatukan oleh rasa autentik Pempek yang mendunia.
+        </p>
+      </div>
+
+      <div
+        id="palembang-timer"
+        class="absolute bottom-0 left-0 h-1.5 bg-[#D4AF37] z-30 shadow-[0_0_15px_#D4AF37]"
+        style="width: 0%"
+      ></div>
+    </section>
+
+    <section class="py-24 px-6">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 glass p-10 rounded-3xl border-l-4 border-l-red-700">
+          <h3 class="text-2xl font-bold mb-4 text-palembang-gold">
+            Tentang Palembang
+          </h3>
+          <p class="text-gray-300 leading-relaxed text-lg">
+            Sebagai bekas pusat kemaharajaan maritim Sriwijaya, Palembang adalah kota air yang hidup. 
+            Jembatan Ampera berdiri kokoh sebagai saksi bisu modernisasi, sementara Pulau Kemaro 
+            menjaga legenda cinta dan toleransi budaya di tengah Sungai Musi.
+          </p>
+          <p class="text-gray-400 mt-4 italic">
+            "Wong Kito Galo!" Menikmati matahari terbenam di pelataran Benteng Kuto Besak sembari 
+            menyesap kuah cuko yang pedas-mantap adalah cara terbaik merasakan jiwa kota ini.
+          </p>
+        </div>
+
+        <div class="glass p-8 rounded-3xl space-y-8 flex flex-col justify-center border-t-4 border-t-yellow-600">
+          <div>
+            <p class="text-xs text-red-400 uppercase tracking-widest mb-1">Popularitas Traveler</p>
+            <p class="text-4xl font-black text-white">31.5%</p>
+          </div>
+          <div>
+            <p class="text-xs text-red-400 uppercase tracking-widest mb-1">Kategori</p>
+            <p class="font-bold text-xl text-yellow-500">Sejarah • Budaya • Kuliner</p>
+          </div>
+          <div>
+            <p class="text-xs text-red-400 uppercase tracking-widest mb-1">Ikon Kota</p>
+            <p class="font-semibold text-gray-200">Ampera, Pulau Kemaro, Sungai Musi</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 px-6 bg-[#050000]">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl font-black mb-10 text-white">
+      Destinasi <span class="text-palembang-gold">Palembang</span>
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <div class="group relative overflow-hidden rounded-2xl aspect-video md:aspect-square">
+        <img src="https://liburasik.com/wp-content/uploads/2023/05/Jembatan-Ampera-Jadi-Simbol-Kebanggaan-Masyarakat-Palembang.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-red-950/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center">
+            <span class="font-bold border-2 border-white px-4 py-2 uppercase tracking-widest text-white mb-3">Jembatan Ampera</span>
+            <p class="text-white text-sm font-light">Landmark ikonik di atas Sungai Musi yang menghubungkan wilayah Seberang Ulu dan Seberang Ilir.</p>
+        </div>
+      </div>
+
+      <div class="group relative overflow-hidden rounded-2xl aspect-video md:aspect-square">
+        <img src="https://img.okezone.com/content/2014/11/30/406/1072591/pulau-kemaro-palembang-kaya-peninggalan-sejarah-QM2cVNGEs3.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-red-950/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center">
+            <span class="font-bold border-2 border-white px-4 py-2 uppercase tracking-widest text-white mb-3">Pulau Kemaro</span>
+            <p class="text-white text-sm font-light">Pulau bersejarah di tengah Sungai Musi yang terkenal dengan Pagoda 9 lantai dan legenda cintanya.</p>
+        </div>
+      </div>
+
+      <div class="group relative overflow-hidden rounded-2xl aspect-video md:aspect-square">
+        <img src="https://tse2.mm.bing.net/th/id/OIP.I6q1I7Q5l7z-uJi6j0Uw8AHaE7?pid=Api&h=220&P=0" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-red-950/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center">
+            <span class="font-bold border-2 border-white px-4 py-2 uppercase tracking-widest text-white mb-3">Jakabaring Sport City</span>
+            <p class="text-white text-sm font-light">Kompleks olahraga bertaraf internasional yang pernah menjadi tuan rumah ajang bergengsi Asian Games.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    <footer class="py-24 px-6 text-center border-t border-red-900/30">
+      <h2 class="text-4xl font-black mb-6">Payo ke Palembang!</h2>
+      <a
+        href="../pages/index.html#map-section"
+        class="inline-block px-10 py-4 bg-[#B91C1C] hover:bg-red-800 text-white rounded-full font-bold transition-all hover:scale-105 shadow-xl shadow-red-900/40 border border-yellow-500"
+      >
+        Jelajahi Kota Lain
+      </a>
+    </footer>
+
+    <script>
+      const palembangImages = [
+        "https://yolandaklara.wordpress.com/wp-content/uploads/2019/06/jembatan-ampera-salah-satu-ikon-kota-terpopuler-di-indonesia02581225.jpg?w=1162&h=874", // Ampera
+        "https://thumb.viva.id/intipseleb/663x372/2024/07/10/668e28a4e9c77-benteng-kuto-besak.jpg", // Benteng Kuto Besak
+        "https://img.okezone.com/content/2014/11/30/406/1072591/pulau-kemaro-palembang-kaya-peninggalan-sejarah-QM2cVNGEs3.jpg", // Pulau Kemaro
+      ];
+
+      let index = 0;
+      const bgContainer = document.getElementById("palembang-bg");
+      const timerBar = document.getElementById("palembang-timer");
+
+      palembangImages.forEach((img, i) => {
+        const div = document.createElement("div");
+        div.className = `bg-slide ${i === 0 ? "active" : ""}`;
+        div.style.backgroundImage = `linear-gradient(rgba(13,1,1,0.75), rgba(185,28,28,0.3)), url('${img}')`;
+        bgContainer.appendChild(div);
+      });
+
+      function nextSlide() {
+        const slides = document.querySelectorAll(".bg-slide");
+        if (slides.length === 0) return;
+        slides[index].classList.remove("active");
+        index = (index + 1) % palembangImages.length;
+        slides[index].classList.add("active");
+        startTimer();
+      }
+
+      function startTimer() {
+        timerBar.style.transition = "none";
+        timerBar.style.width = "0%";
+        setTimeout(() => {
+          timerBar.style.transition = "width 10000ms linear";
+          timerBar.style.width = "100%";
+        }, 50);
+      }
+
+      setInterval(nextSlide, 10000);
+      startTimer();
+    </script>
+  </body>
+</html>

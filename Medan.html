@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medan | TravEdu Indonesia</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background: #0a0202; /* Hitam kemerahan sangat gelap */
+      }
+
+      .glass {
+        background: rgba(153, 27, 27, 0.05); /* Tint Merah Ulos */
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(234, 179, 8, 0.2); /* Border Emas Deli */
+      }
+
+      /* Slideshow */
+      .bg-slide {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transform: scale(1.1);
+        transition:
+          opacity 1.5s ease-in-out,
+          transform 10s linear;
+      }
+      .bg-slide.active {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* Custom Accent Colors */
+      .text-medan-gold { color: #eab308; }
+      .bg-medan-red { background-color: #991b1b; }
+    </style>
+  </head>
+
+  <body class="text-white font-sans overflow-x-hidden">
+    <nav
+      class="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-md border-b border-red-900/40"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between"
+      >
+        <a
+          href="index.html"
+          class="text-xl font-bold bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent"
+        >
+          TravEdu
+        </a>
+        <a
+          href="index.html"
+          class="text-sm px-4 py-2 rounded-lg bg-[#991b1b] hover:bg-red-900 border border-yellow-600/30 transition shadow-lg shadow-red-900/20"
+        >
+          <i class="fas fa-arrow-left mr-2"></i>Kembali
+        </a>
+      </div>
+    </nav>
+
+    <section
+      class="relative h-screen w-full overflow-hidden flex items-center justify-center"
+    >
+      <div id="medan-bg" class="absolute inset-0"></div>
+
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-[#0a0202] z-10"
+      ></div>
+
+      <div class="relative z-20 text-center px-6 max-w-4xl">
+        <h2
+          class="text-medan-gold tracking-[0.4em] text-sm mb-4 uppercase font-bold animate-pulse"
+        >
+          The Paris of Sumatra
+        </h2>
+        <h1 class="text-6xl md:text-8xl font-black uppercase mb-6 tracking-tighter text-white">
+          Medan
+        </h1>
+        <div class="w-24 h-1 bg-red-700 mx-auto mb-6 shadow-[0_0_15px_#dc2626]"></div>
+        <p class="text-gray-200 max-w-2xl mx-auto text-lg leading-relaxed">
+          Metropolitan penuh karakter di mana sejarah kolonial Eropa bersatu dengan 
+          kemegahan Istana Maimun dan kelezatan kuliner legendaris yang tiada duanya.
+        </p>
+      </div>
+
+      <div
+        id="medan-timer"
+        class="absolute bottom-0 left-0 h-1.5 bg-[#eab308] z-30 shadow-[0_0_15px_#eab308]"
+        style="width: 0%"
+      ></div>
+    </section>
+
+    <section class="py-24 px-6">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 glass p-10 rounded-3xl border-l-4 border-l-red-800">
+          <h3 class="text-2xl font-bold mb-4 text-medan-gold">
+            Tentang Medan
+          </h3>
+          <p class="text-gray-300 leading-relaxed text-lg">
+            Medan adalah pintu gerbang Sumatra Utara yang dinamis. Dikenal dengan keramahan yang jujur dan 
+            akulturasi budaya Melayu, Batak, Tionghoa, Jawa, hingga India (Little India), kota ini 
+            menawarkan pesona arsitektur *art deco* peninggalan Belanda yang megah.
+          </p>
+          <p class="text-gray-400 mt-4 italic">
+            "Ini Medan Bung!" Menikmati durian Ucok atau bersantai dengan kopi Sidikalang di persimpangan kota 
+            adalah pengalaman wajib yang akan membuat siapa pun rindu untuk kembali.
+          </p>
+        </div>
+
+        <div class="glass p-8 rounded-3xl space-y-8 flex flex-col justify-center border-t-4 border-t-yellow-600">
+          <div>
+            <p class="text-xs text-red-400 uppercase tracking-widest mb-1">Popularitas Traveler</p>
+            <p class="text-4xl font-black text-white">34.1%</p>
+          </div>
+          <div>
+            <p class="text-xs text-red-400 uppercase tracking-widest mb-1">Kategori</p>
+            <p class="font-bold text-xl text-yellow-500">Multikultural • Sejarah • Kuliner</p>
+          </div>
+          <div>
+            <p class="text-xs text-red-400 uppercase tracking-widest mb-1">Ikon Kota</p>
+            <p class="font-semibold text-gray-200">Istana Maimun, Mesjid Raya, Tjong A Fie</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 px-6 bg-[#050101]">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl font-black mb-10 text-white">
+      Destinasi <span class="text-medan-gold">Medan</span>
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <div class="group relative overflow-hidden rounded-2xl aspect-video md:aspect-square">
+        <img src="https://batakita.com/wp-content/uploads/2022/12/image.png" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-red-950/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center">
+            <span class="font-bold border-2 border-white px-4 py-2 uppercase tracking-widest text-white mb-3">Istana Maimun</span>
+            <p class="text-white text-sm font-light">Istana megah Kesultanan Deli yang memadukan arsitektur Melayu, Islam, dan Eropa.</p>
+        </div>
+      </div>
+
+      <div class="group relative overflow-hidden rounded-2xl aspect-video md:aspect-square">
+        <img src="https://portdickson.info/img/pantai-cermin-tide.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-red-950/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center">
+            <span class="font-bold border-2 border-white px-4 py-2 uppercase tracking-widest text-white mb-3">Danau Siombak</span>
+            <p class="text-white text-sm font-light">Danau buatan yang asri di antara aliran Sungai Deli dan Sungai Belawan yang menyejukkan.</p>
+        </div>
+      </div>
+
+      <div class="group relative overflow-hidden rounded-2xl aspect-video md:aspect-square">
+        <img src="https://tse1.mm.bing.net/th/id/OIP.sVMNUxNPMncjRLZbvSTCmwHaEK?pid=Api&h=220&P=0" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-red-950/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center">
+            <span class="font-bold border-2 border-white px-4 py-2 uppercase tracking-widest text-white mb-3">Masjid Raya Al-Mashun</span>
+            <p class="text-white text-sm font-light">Saksi bisu sejarah keemasan Medan dengan gaya arsitektur Timur Tengah dan India yang memukau.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    <footer class="py-24 px-6 text-center border-t border-red-900/30">
+      <h2 class="text-4xl font-black mb-6">Horas Medan!</h2>
+      <a
+        href="index.html"
+        class="inline-block px-10 py-4 bg-[#991b1b] hover:bg-red-800 text-white rounded-full font-bold transition-all hover:scale-105 shadow-xl shadow-red-900/40 border border-yellow-500"
+      >
+        Jelajahi Kota Lain
+      </a>
+    </footer>
+
+    <script>
+      const medanImages = [
+        "https://batakita.com/wp-content/uploads/2022/12/image.png", // Istana Maimun
+        "https://www.visitsoutheastasia.travel/wp-content/uploads/2019/11/Indonesia-Mesjid-Raya-Baiturrahman-1380x800.jpg", // Mesjid Raya
+        "https://regalsprings.co.id/wp-content/uploads/2023/05/danau-toba-1024x682.jpg", // Danau Toba
+      ];
+
+      let index = 0;
+      const bgContainer = document.getElementById("medan-bg");
+      const timerBar = document.getElementById("medan-timer");
+
+      medanImages.forEach((img, i) => {
+        const div = document.createElement("div");
+        div.className = `bg-slide ${i === 0 ? "active" : ""}`;
+        div.style.backgroundImage = `linear-gradient(rgba(10,2,2,0.75), rgba(153,27,27,0.3)), url('${img}')`;
+        bgContainer.appendChild(div);
+      });
+
+      function nextSlide() {
+        const slides = document.querySelectorAll(".bg-slide");
+        if (slides.length === 0) return;
+        slides[index].classList.remove("active");
+        index = (index + 1) % medanImages.length;
+        slides[index].classList.add("active");
+        startTimer();
+      }
+
+      function startTimer() {
+        timerBar.style.transition = "none";
+        timerBar.style.width = "0%";
+        setTimeout(() => {
+          timerBar.style.transition = "width 10000ms linear";
+          timerBar.style.width = "100%";
+        }, 50);
+      }
+
+      setInterval(nextSlide, 10000);
+      startTimer();
+    </script>
+  </body>
+</html>

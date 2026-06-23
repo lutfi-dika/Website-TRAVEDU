@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ambon | TravEdu Indonesia</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background: #000c14; /* Hitam kebiruan laut dalam */
+      }
+
+      .glass {
+        background: rgba(6, 182, 212, 0.05); /* Tint Turquoise */
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(245, 158, 11, 0.2); /* Border rempah/emas */
+      }
+
+      /* Slideshow */
+      .bg-slide {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transform: scale(1.1);
+        transition:
+          opacity 1.5s ease-in-out,
+          transform 10s linear;
+      }
+      .bg-slide.active {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* Custom Accent Colors */
+      .text-ambon-cyan { color: #22d3ee; }
+      .bg-ambon-spice { background-color: #92400e; }
+    </style>
+  </head>
+
+  <body class="text-white font-sans overflow-x-hidden">
+    <nav
+      class="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-md border-b border-cyan-900/40"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between"
+      >
+        <a
+          href="index.html"
+          class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-amber-500 bg-clip-text text-transparent"
+        >
+          TravEdu
+        </a>
+        <a
+          href="index.html"
+          class="text-sm px-4 py-2 rounded-lg bg-[#92400e] hover:bg-amber-900 border border-cyan-500/30 transition shadow-lg shadow-cyan-900/20"
+        >
+          <i class="fas fa-arrow-left mr-2"></i>Kembali
+        </a>
+      </div>
+    </nav>
+
+    <section
+      class="relative h-screen w-full overflow-hidden flex items-center justify-center"
+    >
+      <div id="ambon-bg" class="absolute inset-0"></div>
+
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-[#000c14] z-10"
+      ></div>
+
+      <div class="relative z-20 text-center px-6 max-w-4xl">
+        <h2
+          class="text-ambon-cyan tracking-[0.4em] text-sm mb-4 uppercase font-bold animate-pulse"
+        >
+          UNESCO City of Music
+        </h2>
+        <h1 class="text-6xl md:text-8xl font-black uppercase mb-6 tracking-tighter text-white">
+          Ambon
+        </h1>
+        <div class="w-24 h-1 bg-cyan-500 mx-auto mb-6 shadow-[0_0_15px_#06b6d4]"></div>
+        <p class="text-gray-200 max-w-2xl mx-auto text-lg leading-relaxed">
+          Manise! Kota di pelukan teluk yang senantiasa bernyanyi, di mana aroma cengkih 
+          berpadu dengan harmoni toleransi dan kejernihan air laut Banda.
+        </p>
+      </div>
+
+      <div
+        id="ambon-timer"
+        class="absolute bottom-0 left-0 h-1.5 bg-[#22d3ee] z-30 shadow-[0_0_15px_#22d3ee]"
+        style="width: 0%"
+      ></div>
+    </section>
+
+    <section class="py-24 px-6">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 glass p-10 rounded-3xl border-l-4 border-l-cyan-600">
+          <h3 class="text-2xl font-bold mb-4 text-ambon-cyan">
+            Tentang Ambon
+          </h3>
+          <p class="text-gray-300 leading-relaxed text-lg">
+            Ambon adalah episentrum kebudayaan Maluku. Sebagai kota musik dunia versi UNESCO, irama adalah napas kota ini. 
+            Dari kemegahan Jembatan Merah Putih hingga keasrian Pantai Pintu Kota, Ambon menawarkan 
+            estetika alam dan ritme kehidupan yang tulus.
+          </p>
+          <p class="text-gray-400 mt-4 italic">
+            "Sagu se-lempeng dipatah dua." Semangat pela gandong menjadikan kota ini simbol persaudaraan 
+            yang abadi di tengah indahnya gugusan kepulauan rempah.
+          </p>
+        </div>
+
+        <div class="glass p-8 rounded-3xl space-y-8 flex flex-col justify-center border-t-4 border-t-amber-600">
+          <div>
+            <p class="text-xs text-cyan-400 uppercase tracking-widest mb-1">Popularitas Traveler</p>
+            <p class="text-4xl font-black text-white">19.2%</p>
+          </div>
+          <div>
+            <p class="text-xs text-cyan-400 uppercase tracking-widest mb-1">Kategori</p>
+            <p class="font-bold text-xl text-amber-500">Musik • Bahari • Sejarah</p>
+          </div>
+          <div>
+            <p class="text-xs text-cyan-400 uppercase tracking-widest mb-1">Ikon Kota</p>
+            <p class="font-semibold text-gray-200">Jembatan Merah Putih, Gong Perdamaian, Pantai Natsepa</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 px-6 bg-[#00060a]">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl font-black mb-10 text-white">
+      Destinasi <span class="text-ambon-cyan">Ambon</span>
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <div class="group relative overflow-hidden rounded-2xl aspect-video md:aspect-square">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.ldm2kpEvSWDNqgGQTZDRewHaE6?pid=Api&h=220&P=0" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-cyan-900/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-4">
+          <div class="text-center text-white">
+            <span class="block font-bold border-2 border-white px-4 py-2 uppercase tracking-widest mb-3">Pantai Ora</span>
+            <p class="text-sm font-light leading-relaxed">Surga tersembunyi dengan air kristal dan penginapan di atas laut yang menenangkan.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="group relative overflow-hidden rounded-2xl aspect-video md:aspect-square">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.pw6VCfUYlv5Q5VIPCSscaAHaFj?pid=Api&h=220&P=0" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-cyan-900/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-4">
+          <div class="text-center text-white">
+            <span class="block font-bold border-2 border-white px-4 py-2 uppercase tracking-widest mb-3">Jembatan Merah Putih</span>
+            <p class="text-sm font-light leading-relaxed">Ikon kemegahan kota Ambon yang menghubungkan Galala dan Poka melintasi Teluk Ambon.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="group relative overflow-hidden rounded-2xl aspect-video md:aspect-square">
+        <img src="https://d3hne3c382ip58.cloudfront.net/files/uploads/bookmundi/resized/cms/diving-in-indonesia-pintu-kota-1534308934-735X412.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-cyan-900/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-4">
+          <div class="text-center text-white">
+            <span class="block font-bold border-2 border-white px-4 py-2 uppercase tracking-widest mb-3">Pintu Kota</span>
+            <p class="text-sm font-light leading-relaxed">Tebing karang raksasa dengan lubang unik yang menghadap langsung ke Laut Banda.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    <footer class="py-24 px-6 text-center border-t border-cyan-900/30">
+      <h2 class="text-4xl font-black mb-6">Dangke Banyak, Ambon!</h2>
+      <a
+        href="index.html"
+        class="inline-block px-10 py-4 bg-[#92400e] hover:bg-amber-800 text-white rounded-full font-bold transition-all hover:scale-105 shadow-xl shadow-cyan-900/40 border border-amber-500"
+      >
+        Jelajahi Kota Lain
+      </a>
+    </footer>
+
+    <script>
+      const ambonImages = [
+        "https://asset-2.tstatic.net/travel/foto/bank/images/jembatan-merah-putih_20171114_134350.jpg", // Jembatan Merah Putih 
+        "https://asset.kompas.com/crops/d1_fUtbp3Fr3GgYAM7gnnwLUw4k=/0x14:800x547/750x500/data/photo/2021/08/27/6127df3f170b6.jpg", // Benteng Victoria
+        "https://tse4.mm.bing.net/th/id/OIP.TcXW2VZCl0V2djdsLJrNyQHaFj?pid=Api&h=220&P=0", // Pantai Natsepa
+      ];
+
+      let index = 0;
+      const bgContainer = document.getElementById("ambon-bg");
+      const timerBar = document.getElementById("ambon-timer");
+
+      ambonImages.forEach((img, i) => {
+        const div = document.createElement("div");
+        div.className = `bg-slide ${i === 0 ? "active" : ""}`;
+        div.style.backgroundImage = `linear-gradient(rgba(0,12,20,0.75), rgba(6,182,212,0.3)), url('${img}')`;
+        bgContainer.appendChild(div);
+      });
+
+      function nextSlide() {
+        const slides = document.querySelectorAll(".bg-slide");
+        if (slides.length === 0) return;
+        slides[index].classList.remove("active");
+        index = (index + 1) % ambonImages.length;
+        slides[index].classList.add("active");
+        startTimer();
+      }
+
+      function startTimer() {
+        timerBar.style.transition = "none";
+        timerBar.style.width = "0%";
+        setTimeout(() => {
+          timerBar.style.transition = "width 10000ms linear";
+          timerBar.style.width = "100%";
+        }, 50);
+      }
+
+      setInterval(nextSlide, 10000);
+      startTimer();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1005 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TravEdu - Ensiklopedia Festival Indonesia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f3f4f6;
+      --text-primary: #111827;
+      --text-secondary: #4b5563;
+      --border-color: #e5e7eb;
+      --card-bg: #ffffff;
+      --nav-bg: rgba(255, 255, 255, 0.95);
+      --dropdown-bg: #ffffff;
+      --nav-text: #1f2937;
+      --nav-text-hover: #dc2626;
+      --festival-section-bg: #f9fafb;
+    }
+
+    html.dark-mode {
+      --bg-primary: #000000;
+      --bg-secondary: #141c22;
+      --text-primary: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --border-color: #252534;
+      --card-bg: #3d3d3d;
+      --nav-bg: rgba(21, 24, 29, 0.95);
+      --dropdown-bg: #424242;
+      --input-bg: rgba(45, 45, 45, 0.05);
+      --input-border: #646464;
+      --festival-section-bg: #000000;
+    }
+
+    /* Animasi Loading */
+    @keyframes spin-slow {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .loading-icon {
+      animation: spin-slow 2s linear infinite;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #000000;
+      scroll-behavior: smooth;
+    }
+
+    html.dark-mode body {
+      background-color: #0f172a;
+      color: #f1f5f9;
+    }
+
+    .bg-hero {
+      background-size: cover;
+      background-position: center;
+      transition: background-image 0.8s ease-in-out;
+      position: relative;
+    }
+
+    .hero-overlay {
+      background: linear-gradient(to top,
+          rgba(5, 5, 5, 1),
+          rgba(0, 0, 0, 0.4),
+          rgba(0, 0, 0, 0.2));
+      position: absolute;
+      inset: 0;
+    }
+
+    html.dark-mode .hero-overlay {
+      background: linear-gradient(to top,
+          rgba(0, 0, 0, 1),
+          rgba(0, 0, 0, 0.6),
+          rgba(0, 0, 0, 0.4));
+    }
+
+    .dropdown-menu {
+      display: none;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+    }
+
+    .dropdown-menu.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .month-btn {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.05);
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .month-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.4);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .month-btn.active {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      color: white;
+      font-weight: bold;
+      border-color: #ef4444;
+      box-shadow: 0 8px 25px rgba(239, 68, 68, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+    }
+
+    .month-btn.active:hover {
+      box-shadow: 0 12px 30px rgba(239, 68, 68, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      transform: scale(1.08);
+    }
+
+    #festival-overlay {
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      transition: all 0.5s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes shimmer {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.7;
+      }
+    }
+
+    .animate-card {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .animate-slide {
+      animation: slideInDown 0.5s ease forwards;
+    }
+
+    .animate-scale {
+      animation: scaleIn 0.5s ease forwards;
+    }
+
+    .hero-text {
+      animation: slideInDown 0.8s ease forwards;
+    }
+
+    .festival-card {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(249, 115, 22, 0.05) 100%);
+    }
+
+    .festival-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .festival-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(239, 68, 68, 0.5);
+      box-shadow: 0 20px 40px rgba(239, 68, 68, 0.2);
+    }
+
+    .festival-card:hover::before {
+      opacity: 1;
+    }
+
+    .festival-card img {
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .festival-card:hover img {
+      transform: scale(1.08) rotate(1deg);
+    }
+
+    .festival-card-content {
+      padding: 24px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .festival-card h3 {
+      font-size: 1.375rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #ef4444, #f97316);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+    }
+
+    .festival-card p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .read-more-btn {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 10px 24px;
+      background: linear-gradient(135deg, #ef4444, #f97316);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+
+    .read-more-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
+    }
+
+    .overlay-title {
+      background: linear-gradient(135deg, #ef4444, #f97316);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .theme-toggle {
+      position: relative;
+      width: 50px;
+      height: 28px;
+      background-color: #cbd5e1;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      padding: 2px;
+      display: flex;
+      align-items: center;
+    }
+
+    html.dark-mode .theme-toggle {
+      background-color: #334155;
+    }
+
+    .theme-toggle::after {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 3px;
+      width: 22px;
+      height: 22px;
+      background-color: white;
+      border-radius: 50%;
+      transition: left 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    html.dark-mode .theme-toggle::after {
+      left: 25px;
+    }
+
+    .lang-toggle {
+      background-color: #e5e7eb;
+      border: 2px solid #d1d5db;
+      padding: 4px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-primary);
+    }
+
+    html.dark-mode .lang-toggle {
+      background-color: #334155;
+      border-color: #475569;
+    }
+
+    .lang-toggle:hover {
+      background-color: #dc2626;
+      color: white;
+      border-color: #dc2626;
+    }
+
+    .lang-toggle.active {
+      background-color: #dc2626;
+      color: white;
+      border-color: #dc2626;
+    }
+
+    .island {
+      flex-shrink: 0;
+      width: 180px;
+      text-align: center;
+      padding: 10px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .island.active {
+      background: #ef4444;
+      color: white;
+    }
+
+    .island:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    @media (max-width: 425px) {
+      .island {
+        width: 140px;
+        padding: 8px;
+        font-size: 14px;
+      }
+
+      .animate-card {
+        animation: fadeInUp 0.6s ease forwards;
+        width: 500vw;
+        max-width: 500vw;
+        flex-shrink: 0;
+      }
+
+      #festival-list {
+        overflow-x: visible;
+        width: 100%;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+
+    @media (min-width: 426px) and (max-width: 640px) {
+      .island {
+        width: 160px;
+        padding: 10px;
+        font-size: 15px;
+      }
+
+      #island-carousel {
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      #island-carousel>div {
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+
+      #city-buttons-container {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start;
+      }
+
+      #city-buttons-container>button {
+        flex-shrink: 0;
+        scroll-snap-align: start;
+      }
+    }
+
+    @media (min-width: 641px) and (max-width: 1024px) {
+      .island {
+        width: 170px;
+        padding: 12px;
+        font-size: 16px;
+      }
+
+      #island-carousel {
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      #island-carousel>div {
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+
+      #city-buttons-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        overflow-x: visible;
+      }
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0a0a0a;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #333;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ef4444;
+    }
+
+    [x-cloak] {
+      display: none !important;
+    }
+
+
+    /* Search input styling */
+    #search-container input {
+      padding: 12px 0;
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
+
+
+
+    #search-container input::placeholder {
+      color: var(--text-primary);
+      opacity: 0.5;
+    }
+
+    html.dark-mode #search-container input::placeholder {
+      color: rgba(241, 245, 249, 0.5);
+    }
+
+    @media screen and (max-width: 425px) {
+      #island-carousel {
+        max-width: 250px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        width: 100%;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      #city-buttons-container {
+        flex-wrap: nowrap;
+        width: 100%;
+        max-width: 450px;
+        justify-content: center;
+        align-items: center;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start;
+      }
+
+      #search-container input {
+        font-size: 1rem;
+        line-height: 1.5rem;
+      }
+
+      #festival-list {
+        justify-content: start;
+        flex-direction: column;
+        overflow-x: visible;
+        gap: 1rem;
+        padding: 0;
+      }
+
+      #festival-list>div {
+        width: 100%;
+        flex: none;
+        scroll-snap-align: none;
+      }
+    }
+
+    @media screen and (max-width: 640px) {
+      #search-container input {
+        font-size: 1.25rem;
+        line-height: 1.875rem;
+      }
+
+      #festival-list {
+        justify-content: start;
+        flex-direction: column;
+        overflow-x: visible;
+        gap: 1rem;
+        padding: 0;
+      }
+
+      #festival-list>div {
+        width: 100%;
+        flex: none;
+        scroll-snap-align: none;
+      }
+    }
+
+    @media screen and (min-width: 641px) and (max-width: 1024px) {
+      #festival-list {
+        flex-direction: column;
+        align-items: stretch;
+        overflow-x: visible;
+        gap: 1rem;
+        padding: 0;
+      }
+
+      #festival-list>div {
+        width: 100%;
+        flex: none;
+        scroll-snap-align: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      #island-carousel {
+        max-width: 300px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        width: 100%;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      #island-carousel>div {
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+
+      #city-buttons-container {
+        flex-wrap: nowrap;
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start;
+      }
+
+      #city-buttons-container>button {
+        flex-shrink: 0;
+        scroll-snap-align: start;
+      }
+
+      #festival-list {
+        flex-direction: column;
+        align-items: stretch;
+        overflow-x: visible;
+        gap: 1rem;
+        padding: 0;
+      }
+
+      #festival-list>div {
+        width: 100%;
+        flex: none;
+        scroll-snap-align: none;
+      }
+    }
+
+    @keyframes spin-slow {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .animate-spin-slow {
+      animation: spin-slow 3s linear infinite;
+    }
+
+    .animate-pulse-soft {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    /* Mencegah interaksi saat loading aktif */
+    .loading-active {
+      overflow: hidden;
+    }
+
+    /* Dark mode untuk festival-section */
+    html.dark-mode #festival-section {
+      background-color: #000000;
+    }
+
+    #festival-list {
+      overflow: hidden;
+      flex-direction: row;
+      align-items: center;
+      overflow-x: auto;
+      display: flex;
+      scroll-snap-type: x mandatory;
+    }
+
+    #festival-list>div {
+      scroll-snap-align: start;
+      flex: 0 0 auto;
+      width: 300px;
+    }
+  </style>
+</head>
+
+<body class="font-sans overflow-x-hidden">
+
+  <div id="loading-overlay"
+    class="fixed inset-0 z-[9999] bg-[#050505] flex flex-col items-center justify-center transition-all duration-700 ease-in-out">
+    <div class="absolute w-64 h-64 bg-red-600/20 rounded-full blur-[100px]"></div>
+
+    <div class="relative flex items-center justify-center w-32 h-32 mb-8">
+      <div class="absolute inset-0 border-2 border-dashed border-red-600/30 rounded-full animate-spin-slow"></div>
+      <div class="absolute inset-2 border-t-4 border-red-600 border-transparent rounded-full animate-spin"></div>
+      <div class="z-10 text-4xl font-black text-white italic tracking-tighter">
+        T<span class="text-red-600">E</span>
+      </div>
+    </div>
+
+    <div class="text-center z-10">
+      <h1 class="text-white text-xl font-bold tracking-[0.2em] uppercase mb-2">Trav Edu</h1>
+      <p id="status-text" class="text-gray-400 text-sm font-light animate-pulse-soft">Menyiapkan Pengalaman...</p>
+    </div>
+
+    <div class="w-48 h-1 bg-gray-800 rounded-full mt-8 overflow-hidden z-10">
+      <div id="progress-bar"
+        class="h-full bg-red-600 w-0 transition-all duration-300 ease-out shadow-[0_0_10px_#dc2626]"></div>
+    </div>
+  </div>
+
+  <nav x-data="{ open: false }" class="fixed top-0 w-full z-50 backdrop-blur-md transition-all duration-300 shadow-sm"
+    style="background-color: var(--nav-bg); border-bottom: 1px solid var(--border-color);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center gap-2 h-16 relative">
+
+        <div class="flex-shrink-0 flex items-center">
+          <h2 class="text-2xl font-bold" style="color: var(--text-primary);">
+            Trav <span class="text-red-600">Edu</span>
+          </h2>
+        </div>
+
+        <div class="hidden md:flex space-x-8 items-center">
+          <a href="home.html" class="font-medium transition hover:text-red-600"
+            style="color: var(--text-primary);">Beranda</a>
+          <a href="home.html#about-section" class="font-medium transition hover:text-red-600"
+            style="color: var(--text-primary);">Tentang</a>
+          <a href="Festival.html" class="font-medium transition hover:text-red-600"
+            style="color: var(--text-primary);">Festival</a>
+          <a href="KulinerSection.html" class="font-medium transition hover:text-red-600"
+            style="color: var(--text-primary);">Kuliner</a>
+        </div>
+
+        <div class="flex items-center space-x-2 md:space-x-4">
+
+          <button id="search-btn" class="p-2 transition focus:outline-none hover-red"
+            style="color: var(--text-primary);">
+            <i class="fas fa-search"></i>
+          </button>
+
+          <button id="theme-toggle" class="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode"
+            style="display: flex; align-items: center;">
+            <i class="fas fa-sun" style="color: #fbbf24; font-size: 10px; margin: 9px;"></i>
+            <i class="fas fa-moon" style="color: #60a5fa; font-size: 10px;"></i>
+          </button>
+
+          <a href="Contact.html"
+            class="hidden md:block bg-red-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-red-700 shadow-lg">
+            Contact
+          </a>
+
+          <div
+            class="flex items-center space-x-1.5 bg-gray-900 text-white px-2 py-1 rounded-md border border-gray-700 scale-90 sm:scale-100">
+            <i class="fas fa-clock text-red-500 text-[10px]"></i>
+            <div class="font-mono text-[11px] md:text-xs font-bold tabular-nums tracking-wider">
+              <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+            </div>
+          </div>
+
+          <button @click="open = !open" class="md:hidden p-2 rounded-md focus:outline-none"
+            style="color: var(--text-primary);">
+            <i class="fas" :class="open ? 'fa-times text-2xl' : 'fa-bars text-xl'"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div x-show="open" x-transition:enter="transition ease-out duration-200"
+      x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" x-cloak
+      @click.outside="open = false" class="md:hidden flex flex-col space-y-2 px-6 py-4 border-t shadow-inner bg-white"
+      style="background-color: var(--nav-bg);">
+      <a href="home.html" class="block py-2 font-medium" style="color: var(--text-primary);">Beranda</a>
+      <a href="home.html#about-section" class="block py-2 font-medium" style="color: var(--text-primary);">Tentang</a>
+      <a href="#Festival" class="block py-2 font-medium" style="color: var(--text-primary);">Festival</a>
+      <a href="KulinerSection.html" class="block py-2 font-medium" style="color: var(--text-primary);">Kuliner</a>
+      <hr class="border-gray-200 my-2">
+
+      <a href="Contact.html" class="block py-2 font-bold text-red-600">Contact Us</a>
+    </div>
+  </nav>
+  <div id="search-container"
+    class="fixed top-16 left-0 right-0 z-40 backdrop-blur-lg max-h-0 overflow-hidden transition-all duration-300 shadow-sm"
+    style="background: linear-gradient(to right, var(--bg-primary), var(--bg-secondary), var(--bg-primary)); border-bottom: 1px solid var(--border-color);">
+    <div class="flex flex-col items-stretch px-4 sm:px-8 py-6 max-w-7xl mx-auto">
+      <div class="flex items-center">
+        <i class="fas fa-search text-red-600 mr-4 text-lg flex-shrink-0"></i>
+        <input type="text" placeholder="Cari Kota Atau Destinasi..."
+          class="w-full outline-none text-lg transition-colors duration-300 focus:ring-0 py-3 input-focus"
+          style="background-color: var(--input-bg); color: var(--text-primary); border-bottom: 2px solid var(--input-border);"
+          data-i18n-placeholder="placeholder_search" />
+        <button id="close-search" class="p-2 transition-colors duration-300 ml-4 flex-shrink-0 hover-red"
+          style="color: var(--text-secondary);">
+          <i class="fas fa-times text-2xl"></i>
+        </button>
+      </div>
+
+      <div id="search-suggestions" class="mt-4 space-y-2"></div>
+    </div>
+  </div>
+
+
+  <div id="hero-section" class="relative h-screen w-full bg-hero flex items-center justify-center overflow-hidden"
+    style="
+        background-image: url(&quot;https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=80&w=2000&quot;);
+      ">
+    <div class="hero-overlay"></div>
+
+    <div class="relative z-10 text-center px-4">
+      <span class="text-red-500 font-bold tracking-[0.5em] uppercase mb-4 block animate-pulse">Jelajahi Budaya
+        Indonesia</span>
+      <h1 id="place-name"
+        class="text-6xl md:text-[120px] font-black tracking-tighter transition-all duration-700 uppercase leading-none mb-6"
+        style="color: white;">
+        BALI
+      </h1>
+      <p id="place-desc" class="max-w-2xl mx-auto text-lg md:text-xl text-gray-300 font-light leading-relaxed">
+        The Island of Gods and Endless Festivals
+      </p>
+    </div>
+
+    <div class="absolute top-0 w-full flex justify-center items-center z-17"></div>
+
+    <nav class="fixed bottom-10 w-full grid justify-center z-20">
+      <div class="rounded-3xl flex items-center justify-center mb-6">
+        <button id="prev-island" class="text-white text-2xl mr-4 hover:text-red-500 transition"
+          aria-label="Previous island">
+          < </button>
+            <div id="island-carousel"
+              class="rounded-3xl flex overflow-x-auto md:overflow-hidden space-x-8 w-auto max-w-4xl bg-transparent">
+              <div
+                class="island cursor-pointer max-w-8xl px-8 py-3 rounded-2xl text-sm uppercase tracking-widest flex-shrink-0"
+                data-island="Jawa" onclick="selectIsland('Jawa')" style="color: white;">
+                Jawa
+              </div>
+              <div
+                class="island active cursor-pointer px-8 py-3 rounded-2xl text-sm uppercase tracking-widest flex-shrink-0"
+                data-island="Bali" onclick="selectIsland('Bali')" style="color: white;">
+                Bali
+              </div>
+              <div class="island cursor-pointer px-8 py-3 rounded-2xl text-sm uppercase tracking-widest flex-shrink-0"
+                data-island="Sumatra" onclick="selectIsland('Sumatra')" style="color: white;">
+                Sumatra
+              </div>
+              <div class="island cursor-pointer px-8 py-3 rounded-2xl text-sm uppercase tracking-widest flex-shrink-0"
+                data-island="Kalimantan" onclick="selectIsland('Kalimantan')" style="color: white;">
+                Kalimantan
+              </div>
+              <div class="island cursor-pointer px-8 py-3 rounded-2xl text-sm uppercase tracking-widest flex-shrink-0"
+                data-island="Sulawesi" onclick="selectIsland('Sulawesi')" style="color: white;">
+                Sulawesi
+              </div>
+              <div class="island cursor-pointer px-8 py-3 rounded-2xl text-sm uppercase tracking-widest flex-shrink-0"
+                data-island="Papua" onclick="selectIsland('Papua')" style="color: white;">
+                Papua
+              </div>
+              <div class="island cursor-pointer px-8 py-3 rounded-2xl text-sm uppercase tracking-widest flex-shrink-0"
+                data-island="Maluku" onclick="selectIsland('Maluku')" style="color: white;">
+                Maluku
+              </div>
+              <div
+                class="island cursor-pointer w-80 px-8 py-3 rounded-2xl text-sm uppercase tracking-widest flex-shrink-0"
+                data-island="Nusa Tenggara" onclick="selectIsland('Nusa Tenggara')" style="color: white;">
+                Nusa Tenggara
+              </div>
+            </div>
+            <button id="next-island" class="text-white text-2xl ml-4 hover:text-red-500 transition"
+              aria-label="Next island">
+              >
+            </button>
+      </div>
+      <div id="city-buttons-container"
+        class="flex flex-nowrap overflow-x-auto md:flex-wrap md:overflow-hidden justify-center gap-3 bg-white/5 backdrop-blur-2xl p-3 rounded-3xl border border-white/10 shadow-2xl">
+        <button onclick="changeCity('Bali', this)"
+          class="month-btn active px-8 py-3 rounded-2xl text-sm uppercase tracking-widest flex-shrink-0">
+          Bali
+        </button>
+        <button onclick="changeCity('Jogja', this)"
+          class="month-btn px-8 py-3 rounded-2xl text-sm uppercase tracking-widest flex-shrink-0">
+          Jogja
+        </button>
+        <button onclick="changeCity('Jakarta', this)"
+          class="month-btn px-8 py-3 rounded-2xl text-sm uppercase tracking-widest flex-shrink-0">
+          Jakarta
+        </button>
+        <button onclick="changeCity('Bandung', this)"
+          class="month-btn px-8 py-3 rounded-2xl text-sm uppercase tracking-widest flex-shrink-0">
+          Bandung
+        </button>
+        <button onclick="changeCity('Malang', this)"
+          class="month-btn px-8 py-3 rounded-2xl text-sm uppercase tracking-widest flex-shrink-0">
+          Malang
+        </button>
+        <button onclick="changeCity('Medan', this)"
+          class="month-btn px-8 py-3 rounded-2xl text-sm uppercase tracking-widest flex-shrink-0">
+          Medan
+        </button>
+        <button onclick="changeCity('Padang', this)"
+          class="month-btn px-8 py-3 rounded-2xl text-sm uppercase tracking-widest flex-shrink-0">
+          Padang
+        </button>
+        <button onclick="changeCity('Palembang', this)"
+          class="month-btn px-8 py-3 rounded-2xl text-sm uppercase tracking-widest flex-shrink-0">
+          Palembang
+        </button>
+      </div>
+    </nav>
+  </div>
+  </div>
+
+  <section id="festival-section"
+    class="relative z-10 bg-gradient-to-b from-black via-zinc-950 to-black flex flex-col items-center p-4 md:p-12">
+    <div class="relative z-10 max-w-6xl w-full mb-12 border-l-4 border-red-600 pl-8">
+      <h2 id="overlay-city-title"
+        class="text-3xl sm:text-6xl font-black uppercase tracking-tighter mb-2 bg-gradient-to-r from-white via-white to-red-400 bg-clip-text text-transparent">
+        Pilih Kota</h2>
+      <p class="text-red-500 font-bold tracking-widest uppercase text-xs sm:text-sm">Katalog Festival Budaya Pilihan</p>
+    </div>
+
+    <div class="relative w-full px-0 sm:px-12">
+      <button id="prev-festival"
+        class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 bg-red-600 text-white p-4 rounded-full z-20 shadow-xl hover:scale-110 transition">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+
+      <div id="festival-list" class="scrollbar-hide gap-5 justify-center items-center">
+        <!-- Festival cards will be dynamically inserted here -->
+      </div>
+
+      <button id="next-festival"
+        class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 bg-red-600 text-white p-4 rounded-full z-20 shadow-xl hover:scale-110 transition">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <div id="article-modal"
+    class="fixed inset-0 z-[80] bg-black/95 hidden items-center justify-center p-0 md:p-10 backdrop-blur-xl">
+    <div
+      class="bg-zinc-950 w-full max-w-6xl h-full md:h-auto md:max-h-[90vh] rounded-none md:rounded-[40px] overflow-y-auto relative border border-white/10 shadow-2xl">
+      <button onclick="closeArticle()"
+        class="sticky top-6 float-right mr-6 text-2xl hover:text-red-500 z-[90] bg-black/50 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center transition">
+        <i class="fas fa-times"></i>
+      </button>
+      <div id="article-content" class="text-gray-300"></div>
+    </div>
+  </div>
+
+  <script src="Festival.js"></script>
+
+  <script>
+    window.addEventListener('load', () => {
+      const progressBar = document.getElementById('progress-bar');
+      const statusText = document.getElementById('status-text');
+      const loader = document.getElementById('loading-overlay');
+
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += Math.random() * 25;
+        if (progress > 100) progress = 100;
+
+        progressBar.style.width = `${progress}%`;
+
+        if (progress >= 100) {
+          clearInterval(interval);
+          statusText.textContent = "Siap!";
+
+          setTimeout(() => {
+            // 1. Tambahkan pointer-events-none agar klik "tembus" ke bawah
+            loader.classList.add('pointer-events-none');
+            loader.style.opacity = '0';
+            loader.style.transform = 'scale(1.1)';
+
+            // 2. Aktifkan kembali scroll pada body
+            document.body.classList.remove('loading-active');
+
+            // 3. Benar-benar hapus dari display setelah transisi selesai
+            setTimeout(() => {
+              loader.style.display = 'none';
+            }, 700);
+          }, 500);
+        }
+      }, 200);
+    });
+
+    // Clock Function
+    function updateClock() {
+      const now = new Date();
+      document.getElementById('hours').textContent = String(now.getHours()).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(now.getMinutes()).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(now.getSeconds()).padStart(2, '0');
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+
+</body>
+
+</html>

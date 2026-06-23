@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Makassar | TravEdu Indonesia</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background: #050000; /* Hitam kemerahan */
+      }
+
+      .glass {
+        background: rgba(139, 0, 0, 0.05); /* Tint merah marun */
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 215, 0, 0.2); /* Border emas tipis */
+      }
+
+      /* Slideshow */
+      .bg-slide {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transform: scale(1.1);
+        transition:
+          opacity 1.5s ease-in-out,
+          transform 10s linear;
+      }
+      .bg-slide.active {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* Custom Accent Colors */
+      .text-makassar-gold { color: #FFD700; }
+      .bg-makassar-red { background-color: #8B0000; }
+      .border-makassar-gold { border-color: #FFD700; }
+    </style>
+  </head>
+
+  <body class="text-white font-sans overflow-x-hidden">
+    <nav
+      class="fixed top-0 w-full z-50 bg-black/30 backdrop-blur-md border-b border-yellow-600/30"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between"
+      >
+        <a
+          href="index.html"
+          class="text-xl font-bold bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent"
+        >
+          TravEdu
+        </a>
+        <a
+          href="index.html" 
+          class="text-sm px-4 py-2 rounded-lg bg-[#8B0000] hover:bg-red-800 border border-yellow-600/50 transition shadow-lg shadow-red-900/20"
+        >
+          <i class="fas fa-arrow-left mr-2"></i>Kembali
+        </a>
+      </div>
+    </nav>
+
+    <section
+      class="relative h-screen w-full overflow-hidden flex items-center justify-center"
+    >
+      <div id="makassar-bg" class="absolute inset-0"></div>
+
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-[#050000] z-10"
+      ></div>
+
+      <div class="relative z-20 text-center px-6 max-w-4xl">
+        <h2
+          class="text-makassar-gold tracking-[0.4em] text-sm mb-4 uppercase font-bold animate-pulse"
+        >
+          Land of the Brave - Ewako!
+        </h2>
+        <h1 class="text-6xl md:text-8xl font-black uppercase mb-6 italic tracking-tighter text-white">
+          Makassar
+        </h1>
+        <div class="w-24 h-1 bg-makassar-red mx-auto mb-6"></div>
+        <p class="text-gray-200 max-w-2xl mx-auto text-lg leading-relaxed">
+          Kota Daeng yang gagah, tempat bertemunya kejayaan maritim Phinisi, 
+          kelezatan kuliner rempah, dan keramahan penduduk yang menjunjung tinggi kehormatan.
+        </p>
+      </div>
+
+      <div
+        id="makassar-timer"
+        class="absolute bottom-0 left-0 h-1.5 bg-[#FFD700] z-30 shadow-[0_0_10px_#FFD700]"
+        style="width: 0%"
+      ></div>
+    </section>
+
+    <section class="py-24 px-6">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 glass p-10 rounded-3xl border-l-4 border-l-red-700">
+          <h3 class="text-2xl font-bold mb-4 text-makassar-gold">
+            Tentang Makassar
+          </h3>
+          <p class="text-gray-300 leading-relaxed text-lg">
+            Makassar adalah simpul utama Indonesia Timur yang kaya akan sejarah 
+            Sultan Hasanuddin. Dikenal dengan karakter "Siri' na Pacce", kota ini 
+            menawarkan harmoni antara pusat bisnis modern dan warisan budaya yang tak lekang oleh waktu.
+          </p>
+          <p class="text-gray-400 mt-4 italic">
+            "Takkan lari gunung dikejar, takkan hilang semangat di dada." Menikmati senja di Pantai Losari dengan semangkuk Pisang Epe adalah cara terbaik merayakan hidup di sini.
+          </p>
+        </div>
+
+        <div class="glass p-8 rounded-3xl space-y-8 flex flex-col justify-center border-t-4 border-t-yellow-600">
+          <div>
+            <p class="text-xs text-yellow-500 uppercase tracking-widest mb-1">Popularitas Traveler</p>
+            <p class="text-4xl font-black text-white">32.4%</p>
+          </div>
+          <div>
+            <p class="text-xs text-yellow-500 uppercase tracking-widest mb-1">Filosofi Kota</p>
+            <p class="font-bold text-xl italic text-red-500">Siri' na Pacce</p>
+          </div>
+          <div>
+            <p class="text-xs text-yellow-500 uppercase tracking-widest mb-1">Ikon Kota</p>
+            <p class="font-semibold text-gray-200">Losari, Rotterdam, Phinisi</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 px-6 bg-[#080000]">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl font-black mb-10 text-white">
+      Destinasi <span class="text-makassar-gold">Makassar</span>
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <div class="group relative overflow-hidden rounded-2xl aspect-video md:aspect-square">
+        <img src="https://thumb.viva.co.id/media/frontend/thumbs3/2012/09/27/172984_pantai-losari_663_372.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-red-950/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center">
+            <span class="font-bold border-2 border-white px-4 py-2 uppercase tracking-widest text-white mb-3">Pantai Losari</span>
+            <p class="text-white text-sm font-light">Ikon utama kota Makassar tempat berkumpulnya warga menikmati sunset dan Pisang Epe.</p>
+        </div>
+      </div>
+
+      <div class="group relative overflow-hidden rounded-2xl aspect-video md:aspect-square">
+        <img src="https://tse1.mm.bing.net/th/id/OIP.vzZYMycAVJ3wOovszzJZAAHaFm?pid=Api&h=220&P=0" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-red-950/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center">
+            <span class="font-bold border-2 border-white px-4 py-2 uppercase tracking-widest text-white mb-3">Pulau Kodingareng Keke</span>
+            <p class="text-white text-sm font-light">Pulau tak berpenghuni dengan air kristal biru yang menjadi surga bagi pecinta snorkeling.</p>
+        </div>
+      </div>
+
+      <div class="group relative overflow-hidden rounded-2xl aspect-video md:aspect-square">
+        <img src="https://awsimages.detik.net.id/community/media/visual/2021/06/18/rammang-rammang_169.jpeg?w=1200" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-red-950/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center">
+            <span class="font-bold border-2 border-white px-4 py-2 uppercase tracking-widest text-white mb-3">Rammang Rammang</span>
+            <p class="text-white text-sm font-light">Pegunungan karst terbesar kedua di dunia dengan pemandangan sungai dan desa yang estetik.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    <footer class="py-24 px-6 text-center border-t border-yellow-900/30">
+      <h2 class="text-4xl font-black mb-6">Salama' Ki' di Makassar</h2>
+      <a
+        href="index.html"
+        class="inline-block px-10 py-4 bg-[#8B0000] hover:bg-red-800 text-white rounded-full font-bold transition-all hover:scale-105 shadow-xl shadow-red-900/40 border border-yellow-500"
+      >
+        Jelajahi Kota Lain
+      </a>
+    </footer>
+
+    <script>
+      const makassarImages = [
+        "https://ik.imagekit.io/tvlk/loc-asset/gNr3hLh55ZCkPJisyxFK-v9MmzxPu57ZRVI+10VZ2S4b1PNW4T++cbA6yK4gzhAhs9o2HLZ9vs7gy3rpcIU+oKi5EygzQLRjTUv7fRblEVA=/images/1530676768710-1000x664-FIT_AND_TRIM-441b74eede50874bf6abd8f3c6069066.jpeg?tr=dpr-3",
+        "https://tse1.mm.bing.net/th/id/OIP.XcK0LDHeWEvMOq5JaJRn4QHaE7?pid=Api&h=220&P=0",
+        "https://images.unsplash.com/photo-1516690553959-71a414d6b9b6?q=80&w=1000",
+      ];
+
+      let index = 0;
+      const bgContainer = document.getElementById("makassar-bg");
+      const timerBar = document.getElementById("makassar-timer");
+
+      makassarImages.forEach((img, i) => {
+        const div = document.createElement("div");
+        div.className = `bg-slide ${i === 0 ? "active" : ""}`;
+        div.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(139,0,0,0.4)), url('${img}')`;
+        bgContainer.appendChild(div);
+      });
+
+      function nextSlide() {
+        const slides = document.querySelectorAll(".bg-slide");
+        if (slides.length === 0) return;
+        slides[index].classList.remove("active");
+        index = (index + 1) % makassarImages.length;
+        slides[index].classList.add("active");
+        startTimer();
+      }
+
+      function startTimer() {
+        timerBar.style.transition = "none";
+        timerBar.style.width = "0%";
+        setTimeout(() => {
+          timerBar.style.transition = "width 10000ms linear";
+          timerBar.style.width = "100%";
+        }, 50);
+      }
+
+      setInterval(nextSlide, 10000);
+      startTimer();
+    </script>
+  </body>
+</html>
